@@ -44,7 +44,7 @@ SECRET_KEY = 'django-insecure-@%58t#o+3=9#y)o@jr0tgs6^w25yxbakb55u3&02#$#r=jsvs9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-digitalocean-app-url.com']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Adjust the port if your frontend runs on a different one
