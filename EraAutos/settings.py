@@ -151,5 +151,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Apply Django-Heroku settings conditionally
 if 'DYNO' in os.environ:
     django_heroku.settings(locals())
-
-
