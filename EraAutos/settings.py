@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 import environ
 import dj_database_url
@@ -39,12 +39,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@%58t#o+3=9#y)o@jr0tgs6^w25yxbakb55u3&02#$#r=jsvs9'
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-@%58t#o+3=9#y)o@jr0tgs6^w25yxbakb55u3&02#$#r=jsvs9')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-digitalocean-app-url.com']
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Adjust the port if your frontend runs on a different one
@@ -125,9 +126,10 @@ WSGI_APPLICATION = 'EraAutos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
-    'default':
-        dj_database_url.config('DATABASE_URL')# {
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+}# {
        # 'ENGINE': 'django.db.backends.postgresql',
        # 'NAME': 'era_auto',
       #  'USER': 'era_admin',
