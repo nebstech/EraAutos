@@ -80,14 +80,14 @@ class CarDetail(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
 
     def get_queryset(self):
-        user = self.request.user
-        return Car.objects.filter(user=user)
+        return Car.objects.all()
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
+        print("Instance: ", instance)
         serializer = self.get_serializer(instance)
 
-        cars_not_associated = Car.objects.exclude(id__in=instance.cars.all())
+        cars_not_associated = Car.objects.exclude(id__in=[instance.id])
         cars_serializer = CarSerializer(cars_not_associated, many=True)
 
         return Response({
@@ -105,6 +105,8 @@ class CarDetail(generics.RetrieveUpdateDestroyAPIView):
         if instance.user != self.request.user:
             raise PermissionDenied({"message": "You do not have permission to delete this car."})
         instance.delete()
+
+
 class ModificationLogList(generics.ListCreateAPIView):
     queryset = ModificationLog.objects.all()
     serializer_class = ModificationLogSerializer
