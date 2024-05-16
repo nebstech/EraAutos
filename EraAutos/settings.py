@@ -20,7 +20,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='django-insecure-@%58t#o+3=9#y)o@j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['localhost'])
+ALLOWED_HOSTS = ['.vercel.app']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Adjust the port if your frontend runs on a different one
