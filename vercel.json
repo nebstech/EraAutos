@@ -1,4 +1,4 @@
-cat <<EOF > vercel.json
+
 {
   "version": 2,
   "buildCommand": "pip install psycopg2-binary && python manage.py migrate && python manage.py collectstatic --noinput",
@@ -9,4 +9,4 @@ cat <<EOF > vercel.json
     }
   ]
 }
-EOF
+
