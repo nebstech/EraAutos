@@ -1,9 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "EraAutos/wsgi.py", "use": "@vercel/python" }
+    {
+      "src": "EraAutos/wsgi.py",
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "EraAutos/wsgi.py" }
+    {
+      "src": "/(.*)",
+      "dest": "EraAutos/wsgi.py"
+    }
   ]
 }
