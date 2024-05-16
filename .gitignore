@@ -1,3 +1,5 @@
 EraAutos/.env
 .gitignore
 .vercel
+.idea
+/logs
