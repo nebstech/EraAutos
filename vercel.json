@@ -1,17 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "EraAutos/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb" }
-    }
-  ],
+  "buildCommand": "pip install psycopg2-binary && python manage.py migrate && python manage.py collectstatic --noinput",
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "EraAutos/wsgi.py"
+      "dest": "wsgi.py"
     }
-  ],
-  "buildCommand": "python manage.py migrate && python manage.py collectstatic --noinput"
+  ]
 }
